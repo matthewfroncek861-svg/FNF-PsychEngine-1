@@ -82,8 +82,10 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Note Color Style: ',
 			"How would you like your notes colored?",
 			'noteColorStyle',
-			STRING,
-			['Normal', 'Quant-Based', 'Char-Based', 'Grayscale', 'Rainbow']);
+			'string',
+			'Normal',
+			['Normal', 'Quant-Based', 'Char-Based', 'Grayscale', 'Rainbow'], 
+			STRING);
 		addOption(option);
 
 		var option:Option = new Option('Hide HUD',
