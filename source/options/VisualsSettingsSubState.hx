@@ -44,7 +44,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			var option:Option = new Option('Note Skins:',
 				"Select your prefered Note skin.",
 				'noteSkin',
-				STRING,
+				'string',
 				noteSkins);
 			addOption(option);
 			option.onChange = onChangeNoteSkin;
@@ -61,7 +61,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			var option:Option = new Option('Note Splashes:',
 				"Select your prefered Note Splash variation.",
 				'splashSkin',
-				STRING,
+				'string',
 				noteSplashes);
 			addOption(option);
 			option.onChange = onChangeSplashSkin;
@@ -70,7 +70,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Note Splash Opacity',
 			'How much transparent should the Note Splashes be.',
 			'splashAlpha',
-			PERCENT);
+			'percent');
 		option.scrollSpeed = 1.6;
 		option.minValue = 0.0;
 		option.maxValue = 1;
@@ -91,32 +91,32 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Hide HUD',
 			'If checked, hides most HUD elements.',
 			'hideHud',
-			BOOL);
+			'bool');
 		addOption(option);
 		
 		var option:Option = new Option('Time Bar:',
 			"What should the Time Bar display?",
 			'timeBarType',
-			STRING,
+			'string',
 			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
 		addOption(option);
 
 		var option:Option = new Option('Flashing Lights',
 			"Uncheck this if you're sensitive to flashing lights!",
 			'flashing',
-			BOOL);
+			'bool');
 		addOption(option);
 
 		var option:Option = new Option('Camera Zooms',
 			"If unchecked, the camera won't zoom in on a beat hit.",
 			'camZooms',
-			BOOL);
+			'bool');
 		addOption(option);
 
 		var option:Option = new Option('Score Text Grow on Hit',
 			"If unchecked, disables the Score text growing\neverytime you hit a note.",
 			'scoreZoom',
-			BOOL);
+			'bool');
 		addOption(option);
 
 		var option:Option = new Option('Health Bar Opacity',
@@ -134,7 +134,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('FPS Counter',
 			'If unchecked, hides FPS Counter.',
 			'showFPS',
-			BOOL);
+			'bool');
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
 		#end
@@ -142,7 +142,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Pause Music:',
 			"What song do you prefer for the Pause Screen?",
 			'pauseMusic',
-			STRING,
+			'string',
 			['None', 'Tea Time', 'Breakfast', 'Breakfast (Pico)']);
 		addOption(option);
 		option.onChange = onChangePauseMusic;
@@ -151,7 +151,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Check for Updates',
 			'On Release builds, turn this on to check for updates when you start the game.',
 			'checkForUpdates',
-			BOOL);
+			'bool');
 		addOption(option);
 		#end
 
@@ -159,14 +159,14 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Discord Rich Presence',
 			"Uncheck this to prevent accidental leaks, it will hide the Application from your \"Playing\" box on Discord",
 			'discordRPC',
-			BOOL);
+			'bool');
 		addOption(option);
 		#end
 
 		var option:Option = new Option('Combo Stacking',
 			"If unchecked, Ratings and Combo won't stack, saving on System Memory and making them easier to read",
 			'comboStacking',
-			BOOL);
+			'bool');
 		addOption(option);
 
 		super();
