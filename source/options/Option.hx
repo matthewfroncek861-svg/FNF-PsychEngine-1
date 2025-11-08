@@ -76,6 +76,17 @@ class Option
 				defaultValue = '';
 				defaultKeys = {gamepad: 'NONE', keyboard: 'NONE'};
 				keys = {gamepad: 'NONE', keyboard: 'NONE'};
+				case 'bool':
+					defaultValue = false;
+				case 'int' | 'float':
+					defaultValue = 0;
+				case 'percent':
+					defaultValue = 1;
+				case 'string':
+					defaultValue = '';
+					if(options.length > 0) {
+						defaultValue = options[0];
+					}
 		}
 
 		try
