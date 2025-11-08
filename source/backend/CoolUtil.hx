@@ -7,8 +7,22 @@ import objects.Note;
 
 import shaders.RGBPalette.RGBShaderReference;
 
+import objects.Character;
+
 class CoolUtil
 {
+	public static function getHealthColors(char:Character):Array<Int>
+	{
+		if (char != null)
+			return char.healthColorArray;
+		else
+			return [255, 0, 0];
+	}
+
+	public static final beats:Array<Int> = [
+		4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768, 1024, 1536, 2048, 3072, 6144
+	];
+
 	static var foundQuant:Int = 0;
 	static var theCurBPM:Float = 0;
 	static var stepCrochet:Float = 0;
