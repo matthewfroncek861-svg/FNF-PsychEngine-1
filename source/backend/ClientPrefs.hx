@@ -17,7 +17,6 @@ import states.TitleState;
 	public var antialiasing:Bool = true;
 	public var noteSkin:String = 'Default';
 	public var splashSkin:String = 'Psych';
-	public static var noteColorStyle:String = 'Normal';
 	public var splashAlpha:Float = 0.6;
 	public var lowQuality:Bool = false;
 	public var shaders:Bool = true;
@@ -81,8 +80,51 @@ import states.TitleState;
 }
 
 class ClientPrefs {
+	public static var showNotes:Bool = true;
+	public static var noteSkin:String = 'Default';
+	public static var splashType:String = 'Default';
+	public static var noteSplashes:Bool = true;
+	public static var oppNoteSplashes:Bool = true;
 	public static var data:SaveVariables = {};
 	public static var defaultData:SaveVariables = {};
+	public static var noteColorStyle:String = 'Normal';
+	public static var enableColorShader:Bool = true;
+	//Note Colors
+	public static var arrowRGB:Array<Array<FlxColor>> = [
+		[0xFFC24B99, 0xFFFFFFFF, 0xFF3C1F56],
+		[0xFF00FFFF, 0xFFFFFFFF, 0xFF1542B7],
+		[0xFF12FA05, 0xFFFFFFFF, 0xFF0A4447],
+		[0xFFF9393F, 0xFFFFFFFF, 0xFF651038]];
+
+	//Pixel
+	public static var arrowRGBPixel:Array<Array<FlxColor>> = [
+		[0xFFE276FF, 0xFFFFF9FF, 0xFF60008D],
+		[0xFF3DCAFF, 0xFFF4FFFF, 0xFF003060],
+		[0xFF71E300, 0xFFF6FFE6, 0xFF003100],
+		[0xFFFF884E, 0xFFFFFAF5, 0xFF6C0000]];
+
+	//Quants
+	public static var quantRGB:Array<Array<FlxColor>> = [
+		[0xFFF9393F, 0xFFFFFFFF, 0xFF651038], //4th
+		[0xFF3A48F5, 0xFFFFFFFF, 0xFF0C3D60], //8th
+		[0xFFB200FF, 0xFFFFFFFF, 0xFF57007F], //12th
+		[0xFFFFD800, 0xFFFFFFFF, 0xFF4D4100], //16th
+		[0xFFFF00DC, 0xFFFFFFFF, 0xFF740066], //24th
+		[0xFFFF6A00, 0xFFFFFFFF, 0xFF652800], //32nd
+		[0xFF00FFFF, 0xFFFFFFFF, 0xFF004B5E], //48th
+		[0xFF12FA05, 0xFFFFFFFF, 0xFF0A4447], //64th
+		[0xFFFF7F7F, 0xFFFFFFFF, 0xFF592C2C], //96th
+		[0xFFD67FFF, 0xFFFFFFFF, 0xFF5F3870], //128th
+		[0xFF00FF90, 0xFFFFFFFF, 0xFF003921], //192nd
+		[0xFF7F3300, 0xFFFFFFFF, 0xFF401800], //256th
+		[0xFF007F0E, 0xFFFFFFFF, 0xFF003404], //384th
+		[0xFF230093, 0xFFFFFFFF, 0xFF0F0043], //512th
+		[0xFFE7E7E7, 0xFFFFFFFF, 0xFF2A2A2A], //768th
+		[0xFF00AB64, 0xFFFFFFFF, 0xFF00321E], //1024th
+		[0xFF000000, 0xFFFFFFFF, 0xFF000000], //1536th
+		[0xFFA69C52, 0xFFFFFFFF, 0xFF2F2D17], //2048th
+		[0xFFFFF9AB, 0xFFFFFFFF, 0xFF45442F], //3072nd
+		[0xFFFF6A00, 0xFFFFFFFF, 0xFF652800]]; //6144th
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [

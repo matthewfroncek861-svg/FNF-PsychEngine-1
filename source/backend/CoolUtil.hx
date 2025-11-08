@@ -9,6 +9,12 @@ import shaders.RGBPalette.RGBShaderReference;
 
 class CoolUtil
 {
+	static var foundQuant:Int = 0;
+	static var theCurBPM:Float = 0;
+	static var stepCrochet:Float = 0;
+	static var latestBpmChangeIndex = 0;
+	static var latestBpmChange = null;
+
 	public static function checkNoteQuant(note:Note, timeToCheck:Float, ?rgbShader:RGBShaderReference)
 	{
 		if (ClientPrefs.noteColorStyle == 'Quant-Based' && (ClientPrefs.showNotes && ClientPrefs.enableColorShader))
