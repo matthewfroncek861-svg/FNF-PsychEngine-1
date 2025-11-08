@@ -599,6 +599,9 @@ class Note extends FlxSprite
 		_lastValidChecked = '';
 	}
 
+	var superCoolColor = null;
+	var arr:Array<Int> = [255, 255, 255];
+	var rainbowTime = 0.0;
 	public function updateRGBColors()
 	{
 		if (rgbShader == null && useRGBShader) rgbShader = new RGBShaderReference(this, initializeGlobalRGBShader(noteData, this));
