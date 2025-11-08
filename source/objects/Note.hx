@@ -31,6 +31,42 @@ typedef NoteSplashData = {
 	a:Float
 }
 
+@:structInit class PreloadedChartNote {
+	public var strumTime:Float = 0;
+	public var noteData:Int = 0;
+	public var mustPress:Bool = false;
+	public var oppNote:Bool = false;
+	public var noteType:String = "";
+	public var animSuffix:String = "";
+	public var noteskin:String = "";
+	public var texture:String = "";
+	public var noAnimation:Bool = false;
+	public var noMissAnimation:Bool = false;
+	public var gfNote:Bool = false;
+	public var isSustainNote:Bool = false;
+	public var isSustainEnd:Bool = false;
+	public var sustainLength:Float = 0;
+	public var parentST:Float = 0;
+	public var parentSL:Float = 0;
+	public var hitHealth:Float = 0;
+	public var missHealth:Float = 0;
+	public var hitCausesMiss:Null<Bool> = null;
+	public var wasHit:Bool = false;
+	public var multSpeed:Float = 1;
+	public var multAlpha:Float = 1;
+	public var noteDensity:Float = 1;
+	public var ignoreNote:Bool = false;
+	public var blockHit:Bool = false;
+	public var lowPriority:Bool = false;
+	
+	public function dispose() {
+		// will be cleared by the GC later
+		for (field in Reflect.fields(this)) {
+			Reflect.setField(this, field, null);
+		}
+	}
+}
+
 /**
  * The note object used as a data structure to spawn and manage notes during gameplay.
  * 
@@ -558,6 +594,60 @@ class Note extends FlxSprite
 	{
 		super.destroy();
 		_lastValidChecked = '';
+	}
+
+	public function updateRGBColors()
+	{
+		if (rgbShader == null && useRGBShader) rgbShader = new RGBShaderReference(this, initializeGlobalRGBShader(noteData, this));
+		else switch(ClientPrefs.noteColorStyle)
+		{
+			case 'Rainbow':
+			rainbowTime = (ClientPrefs.rainbowTime != 0 ? ClientPrefs.rainbowTime * 1000 : Conductor.crochet);
+			superCoolColor = new FlxColor(0xFFFF0000);
+			superCoolColor.hue = (strumTime / rainbowTime * 360) % 360;
+			rgbShader.r = superCoolColor;
+			rgbShader.g = FlxColor.WHITE;
+			rgbShader.b = superCoolColor.getDarkened(0.7);
+
+			case 'Quant-Based':
+			CoolUtil.checkNoteQuant(this, (!isSustainNote ? strumTime : parentST), rgbShader);
+
+			case 'Char-Based':
+			if (PlayState.instance != null)
+			{
+				arr = CoolUtil.getHealthColors(doOppStuff ? PlayState.instance.dad : PlayState.instance.boyfriend);
+				if (gfNote) arr = CoolUtil.getHealthColors(PlayState.instance.gf);
+				if (noteData > -1)
+				{
+					rgbShader.r = FlxColor.fromRGB(arr[0], arr[1], arr[2]);
+					rgbShader.g = FlxColor.WHITE;
+					rgbShader.b = rgbShader.r;
+					rgbShader.b = rgbShader.b.getDarkened(0.7);
+				}
+			}
+			else defaultRGB();
+
+			default:
+
+		}
+		if (noteType == 'Hurt Note' && rgbShader != null)
+		{
+				// note colors
+				rgbShader.r = 0xFF101010;
+				rgbShader.g = 0xFFFF0000;
+				rgbShader.b = 0xFF990022;
+
+				// splash data and colors
+				noteSplashData.r = 0xFFFF0000;
+				noteSplashData.g = 0xFF101010;
+				noteSplashData.texture = 'noteSplashes/noteSplashes-electric';
+		}
+		else if (rgbShader != null)
+		{
+			noteSplashData.r = -1;
+			noteSplashData.g = -1;
+			noteSplashData.b = -1;
+		}
 	}
 
 	public function followStrumNote(myStrum:StrumNote, fakeCrochet:Float, songSpeed:Float = 1)
