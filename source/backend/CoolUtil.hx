@@ -5,6 +5,8 @@ import lime.utils.Assets as LimeAssets;
 
 import objects.Note;
 
+import shaders.RGBPalette.RGBShaderReference;
+
 class CoolUtil
 {
 	public static function checkNoteQuant(note:Note, timeToCheck:Float, ?rgbShader:RGBShaderReference)
