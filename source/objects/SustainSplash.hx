@@ -56,10 +56,10 @@ class SustainSplash extends FlxSprite
 
 	public function setupSusSplash(strum:StrumNote, daNote:Note, ?playbackRate:Float = 1):Void
 	{
-		final susLength:Float = (!daNote.isSustainNote ? daNote.sustainLength : daNote.parentSL);
+		final susLength:Float = (!daNote.isSustainNote ? daNote.sustainLength : daNote.parent);
 		final lengthToGet:Int = Math.floor(susLength / Conductor.stepCrochet);
-		final timeToGet:Float = !daNote.isSustainNote ? daNote.strumTime : daNote.parentST;
-		final timeThingy:Float = (startCrochet * lengthToGet + (timeToGet - Conductor.songPosition + ClientPrefs.ratingOffset)) / playbackRate * .001;
+		final timeToGet:Float = !daNote.isSustainNote ? daNote.strumTime : daNote.parent;
+		final timeThingy:Float = (startCrochet * lengthToGet + (timeToGet - Conductor.songPosition + ClientPrefs.data.ratingOffset)) / playbackRate * .001;
 
 		animation.play('hold', true, false, 0);
 		animation.curAnim.frameRate = frameRate;
@@ -102,7 +102,7 @@ class SustainSplash extends FlxSprite
 
 		timer = new FlxTimer().start(timeThingy, (idk:FlxTimer) ->
 		{
-			if (daNote.isSustainEnd && daNote.mustPress && !daNote.noteSplashData.disabled && ClientPrefs.noteSplashes)
+			if (daNote.isSustainNote && daNote.mustPress && !daNote.noteSplashData.disabled && ClientPrefs.noteSplashes)
 			{
 				alpha = 1;
 				animation.play('end', true, false, 0);
