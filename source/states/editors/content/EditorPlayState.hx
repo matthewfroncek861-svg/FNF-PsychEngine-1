@@ -8,6 +8,7 @@ import flixel.input.keyboard.FlxKey;
 import flixel.util.FlxSort;
 import objects.SustainSplash;
 import objects.StrumNote;
+import objects.NoteSplash;
 import openfl.events.KeyboardEvent;
 
 class EditorPlayState extends MusicBeatState
