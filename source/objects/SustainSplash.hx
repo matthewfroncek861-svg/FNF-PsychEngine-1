@@ -59,7 +59,7 @@ class SustainSplash extends FlxSprite
 		final susLength:Float = (!daNote.isSustainNote ? daNote.sustainLength : daNote.parentSL);
 		final lengthToGet:Int = Math.floor(susLength / Conductor.stepCrochet);
 		final timeToGet:Float = !daNote.isSustainNote ? daNote.strumTime : daNote.parentST;
-		final timeThingy:Float = (startCrochet * lengthToGet + (timeToGet - Conductor.songPosition + ClientPrefs.ratingOffset)) / playbackRate * .001;
+		final timeThingy:Float = (startCrochet * lengthToGet + (timeToGet - Conductor.songPosition + ClientPrefs.data.ratingOffset)) / playbackRate * .001;
 
 		animation.play('hold', true, false, 0);
 		animation.curAnim.frameRate = frameRate;
