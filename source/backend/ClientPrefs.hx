@@ -89,6 +89,8 @@ class ClientPrefs {
 	public static var defaultData:SaveVariables = {};
 	public static var noteColorStyle:String = 'Normal';
 	public static var enableColorShader:Bool = true;
+	public static var rainbowTime:Float = 5.0;
+	
 	//Note Colors
 	public static var arrowRGB:Array<Array<FlxColor>> = [
 		[0xFFC24B99, 0xFFFFFFFF, 0xFF3C1F56],
