@@ -82,7 +82,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Note Color Style: ',
 			"How would you like your notes colored?",
 			'noteColorStyle',
-			'Normal',
+			STRING,
 			['Normal', 'Quant-Based', 'Char-Based', 'Grayscale', 'Rainbow']);
 		addOption(option);
 
