@@ -5,6 +5,50 @@ import lime.utils.Assets as LimeAssets;
 
 class CoolUtil
 {
+	public static function checkNoteQuant(note:Note, timeToCheck:Float, ?rgbShader:RGBShaderReference)
+	{
+		if (ClientPrefs.noteColorStyle == 'Quant-Based' && (ClientPrefs.showNotes && ClientPrefs.enableColorShader))
+		{
+			theCurBPM = Conductor.bpm;
+			stepCrochet = (60 / theCurBPM) * 1000;
+			latestBpmChangeIndex = -1;
+			latestBpmChange = null;
+
+			for (i in 0...Conductor.bpmChangeMap.length)
+			{
+				var bpmchange = Conductor.bpmChangeMap[i];
+				if (timeToCheck >= bpmchange.songTime)
+				{
+					latestBpmChangeIndex = i; // Update index of latest change
+					latestBpmChange = bpmchange;
+				}
+			}
+			if (latestBpmChangeIndex >= 0)
+			{
+				theCurBPM = latestBpmChange.bpm;
+				timeToCheck -= latestBpmChange.songTime;
+				stepCrochet = (60 / theCurBPM) * 1000;
+			}
+
+			var beat = Math.round((timeToCheck / stepCrochet) * 1536); // really stupid but allows the game to register every single quant
+			for (i in 0...beats.length)
+			{
+				if (beat % (6144 / beats[i]) == 0)
+				{
+					beat = beats[i];
+					foundQuant = i;
+					break;
+				}
+			}
+
+			if (rgbShader != null)
+			{
+				rgbShader.r = ClientPrefs.quantRGB[foundQuant][0];
+				rgbShader.g = ClientPrefs.quantRGB[foundQuant][1];
+				rgbShader.b = ClientPrefs.quantRGB[foundQuant][2];
+			}
+		}
+	}
 	public static function checkForUpdates(url:String = null):String {
 		if (url == null || url.length == 0)
 			url = "https://raw.githubusercontent.com/ShadowMario/FNF-PsychEngine/main/gitVersion.txt";
