@@ -35,7 +35,6 @@ typedef NoteSplashData = {
 	public var strumTime:Float = 0;
 	public var noteData:Int = 0;
 	public var mustPress:Bool = false;
-	public var doOppStuff:Bool = false;
 	public var oppNote:Bool = false;
 	public var noteType:String = "";
 	public var animSuffix:String = "";
@@ -92,6 +91,7 @@ class Note extends FlxSprite
 	public var noteData:Int = 0;
 
 	public var mustPress:Bool = false;
+	public var doOppStuff:Bool = false;
 	public var canBeHit:Bool = false;
 	public var tooLate:Bool = false;
 
