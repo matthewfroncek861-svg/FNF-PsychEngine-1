@@ -3,6 +3,8 @@ package backend;
 import openfl.utils.Assets;
 import lime.utils.Assets as LimeAssets;
 
+import objects.Note;
+
 class CoolUtil
 {
 	public static function checkNoteQuant(note:Note, timeToCheck:Float, ?rgbShader:RGBShaderReference)
