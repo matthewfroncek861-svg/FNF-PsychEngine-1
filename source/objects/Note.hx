@@ -106,8 +106,11 @@ class Note extends FlxSprite
 	public var spawned:Bool = false;
 
 	public var tail:Array<Note> = []; // for sustains
-	public var parent:Float = 0;
+	public var parent:Note;
 	
+	public var parentST:Float = 0;
+	public var parentSL:Float = 0;
+
 	public var blockHit:Bool = false; // only works for player
 
 	public var sustainLength:Float = 0;
