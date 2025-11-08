@@ -102,7 +102,7 @@ class SustainSplash extends FlxSprite
 
 		timer = new FlxTimer().start(timeThingy, (idk:FlxTimer) ->
 		{
-			if (daNote.isSustainEnd && daNote.mustPress && !daNote.noteSplashData.disabled && ClientPrefs.noteSplashes)
+			if (daNote.isSustainNote && daNote.mustPress && !daNote.noteSplashData.disabled && ClientPrefs.noteSplashes)
 			{
 				alpha = 1;
 				animation.play('end', true, false, 0);
