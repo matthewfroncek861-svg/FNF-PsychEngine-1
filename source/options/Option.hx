@@ -1,8 +1,24 @@
 package options;
 
-import Controls;
+import backend.Controls;
 import flixel.graphics.FlxGraphic;
 import flixel.input.keyboard.FlxKey;
+
+typedef Keybind = {
+	keyboard:String,
+	gamepad:String
+}
+
+enum OptionType {
+	// Bool will use checkboxes
+	// Everything else will use a text
+	BOOL;
+	INT;
+	FLOAT;
+	PERCENT;
+	STRING;
+	KEYBIND;
+}
 
 class Option
 {
