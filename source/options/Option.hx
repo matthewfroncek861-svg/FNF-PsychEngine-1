@@ -20,6 +20,7 @@ enum OptionType {
 	KEYBIND;
 }
 
+
 class Option
 {
 	public var child:Alphabet;
