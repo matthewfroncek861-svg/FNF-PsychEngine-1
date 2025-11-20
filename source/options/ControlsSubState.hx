@@ -1,6 +1,6 @@
 package options;
 
-import Controls;
+import backend.Controls;
 import flixel.graphics.FlxGraphic;
 import flixel.input.keyboard.FlxKey;
 
